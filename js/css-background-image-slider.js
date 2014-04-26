@@ -6,12 +6,17 @@ CSS3 BACKGROUND IMAGE SLIDER
  stacked Divs with background images to create a carousel that scales with
  the browser viewport thanks to CSS background-size: cover; property.
 
+ Dependency: jQuery
+
  TODO: Add click functionality & Polish last IE transition
 *=====================================================================
 */
 
 
 (function($) {
+
+	'use strict';
+
 		var htmlDocument = $('html'); // cache document for modernizr testing
 		var slidesContainer = $('.hero');
 		var slide = $('.slide'); //individual slide class
@@ -46,8 +51,6 @@ CSS3 BACKGROUND IMAGE SLIDER
 					
 					//make upcoming div visible and add active class to it
 					activeSlide.next().fadeTo('slow', 1).addClass('active');
-
-					//activeSlide.addBack().fadeTo('slow', 0);
 				}
 			
 			//update counter variable
