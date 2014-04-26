@@ -8,27 +8,12 @@ CSS3 BACKGROUND IMAGE SLIDER
 
  Dependency: jQuery
 
- TODO: Add click functionality & Polish last IE transition
+ TODO: Add click functionality and code it as a jQuery Plugin
 *=====================================================================
 */
 
 
-(function($) {
-
-	'use strict';
-
-		var htmlDocument = $('html'); // cache document for modernizr testing
-		var slidesContainer = $('.hero');
-		var slide = $('.slide'); //individual slide class
-		var allButFirst = $('div.slide:nth-child(n+2)'); //selects all slides but the first one in the set
-		var currentSlide = 1;
-		var sliderLength = slidesContainer.children().length;		
-		
-		// testing fallback 
-		// REMEMBER: UNCOMMENT CSS TRANSITIONS ON CSS FILES AFTER DEBUGGING
-		//htmlDocument.removeClass('csstransitions');
-
-		function cycle() {
+function cycle() {
 			//active slide must be in local scope to be updated
 			var activeSlide = $('.active');
 
@@ -51,6 +36,8 @@ CSS3 BACKGROUND IMAGE SLIDER
 					
 					//make upcoming div visible and add active class to it
 					activeSlide.next().fadeTo('slow', 1).addClass('active');
+
+					//activeSlide.addBack().fadeTo('slow', 0);
 				}
 			
 			//update counter variable
@@ -67,18 +54,21 @@ CSS3 BACKGROUND IMAGE SLIDER
 					slide.first().addClass('active');
 					slide.last().removeClass('active');
 				} else {
+					
 					//IE 9 & Below Fallback
 
-					// TODO: good solution but a bit weird laggy at the end.
-					// it eliminates inline opacity of all slides but the first one and gets
-					// rid of the active class.
-					allButFirst.fadeTo(400, 0).removeClass('active');
+					//fade last one in the set first
+					slide.last().fadeTo('slow',0);
+					
+					//Fade all but the first one in the set to 0 opacity but faster than the
+					// last one to avoid jarring transition
+					allButFirst.fadeTo(100, 0).removeClass('active');
 		
 				}
 			}
 		}
 
 		// autoplay set
-		setInterval(function(currentSlide){cycle();}, 4000);
+		setInterval(function(currentSlide){cycle();}, 4800);
 
 })(jQuery);
