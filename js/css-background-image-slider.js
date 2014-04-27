@@ -13,7 +13,19 @@ CSS3 BACKGROUND IMAGE SLIDER
 */
 
 
-function cycle() {
+(function($) {
+
+	'use strict';
+
+		var htmlDocument = $('html'); // cache document for modernizr testing
+		var slidesContainer = $('.hero');
+		var slide = $('.slide'); //individual slide class
+		var allButFirst = $('div.slide:nth-child(n+2)'); //selects all slides but the first one in the set
+		var currentSlide = 1;
+		var sliderLength = slidesContainer.children().length;		
+		
+
+		function cycle() {
 			//active slide must be in local scope to be updated
 			var activeSlide = $('.active');
 
@@ -23,7 +35,7 @@ function cycle() {
 			
 				// test for CSS transitions using Modernizr			
 				if(htmlDocument.hasClass('csstransitions')) {	
-					console.log('we are using css3 transitions');
+					
 					//make upcoming div visible
 					activeSlide.next().addClass('active');
 
@@ -32,12 +44,11 @@ function cycle() {
 				} else {
 					// IE 9 & BELOW FALLBACK to jQuery Methods to handle slideshow
 					// animation.
-					console.log('we are in old browser environment');
+				
 					
 					//make upcoming div visible and add active class to it
 					activeSlide.next().fadeTo('slow', 1).addClass('active');
 
-					//activeSlide.addBack().fadeTo('slow', 0);
 				}
 			
 			//update counter variable
