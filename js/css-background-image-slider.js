@@ -20,7 +20,7 @@ CSS3 BACKGROUND IMAGE SLIDER
 		var htmlDocument = $('html'); // cache document for modernizr testing
 		var slidesContainer = $('.hero');
 		var slide = $('.slide-single'); //individual slide class
-		var allButFirst = $('div.slide:nth-child(n+2)'); //selects all slides but the first one in the set
+		var allButFirst = $('div.slide-single:nth-child(n+2)'); //selects all slides but the first one in the set
 		var currentSlide = 1;
 		var sliderLength = slidesContainer.children().length;		
 		
