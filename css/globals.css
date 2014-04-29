@@ -2,10 +2,12 @@
 * {
 	
 	-moz-box-sizing: border-box;
-      box-sizing: border-box;
+		 box-sizing: border-box;	
+	
 	-webkit-transition: 0.1s ease-in-out all;
-         transition: 0.1s ease-in-out all;
-}
+	        transition: 0.1s ease-in-out all;
+	        
+ }
 
 html,
 button,
@@ -38,6 +40,10 @@ hr {
     border-top: 1px solid #ccc;
     margin: 1em 0;
     padding: 0;
+}
+
+a, a:focus {
+	outline: 0; /*prevents firefox outline*/
 }
 
 audio,
