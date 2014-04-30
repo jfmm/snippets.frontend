@@ -6,7 +6,7 @@ CSS3 BACKGROUND IMAGE SLIDER
  stacked Divs with background images to create a carousel that scales with
  the browser viewport thanks to CSS background-size: cover; property.
 
- Dependency: jQuery
+ Dependencies: jQuery, Modernizr
 
  TODO: Add click functionality and code it as a jQuery Plugin
 *=====================================================================
