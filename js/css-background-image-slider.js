@@ -55,9 +55,8 @@ CSS3 BACKGROUND IMAGE SLIDER
 			currentSlide += 1;
 			
 			} else {
+				
 			// if counter exceeds number of slides, reset counter,
-			// fade in first slide in the set first, and then fade out the last one
-			// in the set to reveal the first one. 
 			currentSlide = 1;
 
 				// again, check for CSS transitions browswer support			
