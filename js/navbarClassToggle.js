@@ -1,3 +1,10 @@
+/*======================================================================================================
+* Snippet which adds a class to a fixed nav bar (or any element for that matter) upon scrolling and
+* viewport is past the first coordinate.
+* 
+* Dependency: jQuery
+*=======================================================================================================*/
+
 (function($){
 	
 	var navbar = $('.navbar');
