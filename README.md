@@ -14,4 +14,4 @@ The snippets will Include Javascript, HTML5 boilerplate elements and Sass Mixins
 * Fork of HTML5 boilerplate global Styles
 
 ##HTML5
-* HTML5 boiler plate fork Template
+* HTML5 boiler plate fork Template (with added customizations)
