@@ -8,6 +8,7 @@ The snippets will Include Javascript, HTML5 boilerplate elements and Sass Mixins
 ##JavaScript
 * CSS Background Slideshow
 * Smooth Scroll Snippets
+* On Scroll Navigation style toggle
 
 ##CSS
 * Normalize CSS
