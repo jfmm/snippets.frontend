@@ -89,7 +89,7 @@
 	}
 	
 	validateEmail("#email");
-	validateEmail("#email-contact");
+	validateEmail("#contact-email");
 
 	
 	
