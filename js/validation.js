@@ -13,22 +13,26 @@
 	//TODO: (but not pressing) validate zip and phone number. 
 	
 	var form = $("#registration-form");
-	var requiredFields = $("input[required]");
 	var inputs = $("#registration-form input");
 	var registerBtn = $("#submit-btn");
 	var contactChecked = $("#contact-check:checked");
 	var sameAsAbove = $("#contact-check");
 	var secondaryContact = $(".secondary-contact");
 	
+	
 	//Function scans for empty values in required fields
 	function requiredIsEmpty(){
 		
+		var requiredFields = $("input[required]");
+		
 		// Create new array to store input scan results
 		var blanks = requiredFields.map(function(){ return $(this).val() == "" });
-		
+		console.log(blanks);
 		// if this expression doesnot equal -1,
 		// there is required fields still blank
 		return $.inArray(true, blanks) != -1;
+		
+		
 	}
 	
 	
@@ -67,8 +71,13 @@
 	
 	
 	sameAsAbove.click(function(){
-		// when checkbox checked enable button
-		requiredFilledIn();	
+		// when checkbox checked remove contact fields required attribute,
+		// enable button and re-execute requiredIsEmpty to update the reuquired input fields
+		// blanks array
+			
+		$(".secondary-contact").removeAttr("required");
+		requiredFilledIn();
+		requiredIsEmpty();
 	});
 	
 	
