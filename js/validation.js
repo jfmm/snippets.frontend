@@ -4,20 +4,13 @@
 
 (function($){
 	
-	//TODO: requiredfilledin should run on scroll because when fields are auto complete
-	// the keyup event is not registered
-	
-	// TODO: make contact information required UNLESS "same as above" is checked.
-	// If same as above is checked enable submit button
-	
-	//TODO: (but not pressing) validate zip and phone number. 
-	
 	var form = $("#registration-form");
 	var inputs = $("#registration-form input");
 	var registerBtn = $("#submit-btn");
-	var contactChecked = $("#contact-check:checked");
 	var sameAsAbove = $("#contact-check");
 	var secondaryContact = $(".secondary-contact");
+	
+	var areRequired =  true; // this var is used on checkbox click event 
 	
 	
 	//Function scans for empty values in required fields
@@ -27,23 +20,25 @@
 		
 		// Create new array to store input scan results
 		var blanks = requiredFields.map(function(){ return $(this).val() == "" });
-		console.log(blanks);
+		
 		// if this expression doesnot equal -1,
 		// there is required fields still blank
-		return $.inArray(true, blanks) != -1;
-		
-		
+		return $.inArray(true, blanks) != -1;	
 	}
 	
 	
-	// Handles toggling states of submit button
+	// Handles enabling/disabling submit button
 	function requiredFilledIn() {
 		
 		// if requiredIsEmpty function returns true
 		// OR if the e-mail entered is not valid,
 		// OR if same as above is not checked, disables submit button
-		
-		if(requiredIsEmpty() || !isValidEmail($("#email").val()) || !sameAsAbove.prop("checked")){
+		if(!sameAsAbove.prop("checked") && !requiredIsEmpty() && isValidEmail($("#contact-email").val())){ 
+				//ENABLE
+				registerBtn.removeClass("disabled");
+				registerBtn.removeAttr("disabled");
+			
+		}  else if(requiredIsEmpty() || !isValidEmail($("#email").val()) || !sameAsAbove.prop("checked")){
 			
 			registerBtn.addClass("disabled");
 			registerBtn.attr("disabled", "disabled");
@@ -52,7 +47,8 @@
 			
 			registerBtn.removeClass("disabled");
 			registerBtn.removeAttr("disabled");
-		}
+		}	
+		
 	}
 	
 	function isValidEmail(email) {
@@ -70,12 +66,27 @@
 	});
 	
 	
+	
 	sameAsAbove.click(function(){
 		// when checkbox checked remove contact fields required attribute,
 		// enable button and re-execute requiredIsEmpty to update the reuquired input fields
 		// blanks array
+		var secondaryContactFields = $(".secondary-contact");
+		
+		
+		if(areRequired) {
+			//remove required attribute
+			secondaryContactFields.removeAttr("required");
+			console.log("required attribute removed");
+			areRequired = false;
+		} else {
+			// add required attribute
+			console.log("required attribute added back");
+			secondaryContactFields.attr("required", "required");
+			areRequired = true;
+		}
 			
-		$(".secondary-contact").removeAttr("required");
+		
 		requiredFilledIn();
 		requiredIsEmpty();
 	});
@@ -101,9 +112,7 @@
 	validateEmail("#contact-email");
 
 	
-	
 
-	
 	
 	// Work In progress
 	// validate input will be called to validate diferent types of input
@@ -125,11 +134,8 @@
 		
 	}
 	
-
 	
-	
-	
-	// execute this function when page loads
+	// Disable submit button when page loads
 	requiredFilledIn();
 
 })(jQuery);
