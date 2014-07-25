@@ -29,11 +29,11 @@
 	
 	// Handles enabling/disabling submit button
 	function requiredFilledIn() {
-		
-		// if requiredIsEmpty function returns true
-		// OR if the e-mail entered is not valid,
-		// OR if same as above is not checked, disables submit button
-		if(!sameAsAbove.prop("checked") && !requiredIsEmpty() && isValidEmail($("#contact-email").val())){ 
+	
+		if(!sameAsAbove.prop("checked") && 
+			 !requiredIsEmpty() && 
+			 isValidEmail($("#contact-email").val()) && 
+			 isValidEmail($("#email").val())){ 
 				//ENABLE
 				registerBtn.removeClass("disabled");
 				registerBtn.removeAttr("disabled");
