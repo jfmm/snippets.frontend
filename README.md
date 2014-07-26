@@ -9,6 +9,7 @@ The snippets will Include Javascript, HTML5 boilerplate elements and Sass Mixins
 * CSS Background Slideshow
 * Smooth Scroll Snippets
 * On Scroll Navigation style toggle
+* Form Validation Template Script - validation.js
 
 ##CSS
 * Normalize CSS
