@@ -9,7 +9,7 @@ Dependencies: jQuery
 (function($){
 		
 		
-			var affixedSidebar = $("#affixed-sidebar");
+				var affixedSidebar = $("#affixed-sidebar");
 			var topOffset = $('.jumbotron').outerHeight(true); // 400
 			var bottomOffset = $(document).height() - ($("footer").outerHeight(true) + 840);
 			var sidebarHeight = affixedSidebar.outerHeight(true);
@@ -38,22 +38,18 @@ Dependencies: jQuery
 						.addClass("toggle-affixed")
 						.removeAttr("style");
 					
-				} else {
-						
-						if (windowPosition >= bottomOffset) 
-						{
+				} else if (windowPosition >= bottomOffset) {
 								console.log("nav should be in bottom position");
 								
 								affixedSidebar
 								.removeClass("toggle-affixed")
 								.removeClass("toggle-static")
 								.addClass("toggle-bottom")
-								.css("top", bottomOffset - sidebarHeight - 170); // should be bottom offset - height of the nav
-						}
-						else if (windowPosition < topOffset) 
-						{
+								.css("top", bottomOffset - sidebarHeight - 80); // should be bottom offset - height of the nav
+					
+						}	else if (windowPosition < topOffset) {
 								console.log("nav should be static");
 								affixedSidebar.removeClass("toggle-affixed").addClass("toggle-static");
 						}
-				} 
+				 
 			});
