@@ -57,8 +57,3 @@ Dependencies: jQuery
 						}
 				} 
 			});
-
-})(jQuery);
-
-
-})(jQuery);
