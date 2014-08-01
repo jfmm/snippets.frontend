@@ -6,10 +6,13 @@ Affix.js.
 Dependencies: jQuery
 ===========================================*/
 
-
+(function($){
+		
+		
 			var affixedSidebar = $("#affixed-sidebar");
 			var topOffset = $('.jumbotron').outerHeight(true); // 400
 			var bottomOffset = $(document).height() - ($("footer").outerHeight(true) + 900);
+			var sidebarHeight = affixedSidebar.height();
 
 			console.log("top offset is " + topOffset); 
 			console.log("bottom offset is " + bottomOffset);
@@ -19,11 +22,12 @@ Dependencies: jQuery
 			$(window).scroll(function(){
 					
 				
-				var window = $(this);
+				var window = $(this),
+						windowPosition = window.scrollTop();
 				
 				
 				// if window position is past the jumbotron but not past the footer fix the nav
-				if(window.scrollTop() > topOffset && window.scrollTop() < bottomOffset) {
+				if(windowPosition > topOffset && windowPosition < bottomOffset) {
 					
 						console.log("entering affixed zone, nav is fixed");
 						affixedSidebar.removeClass("toggle-static");
@@ -33,15 +37,15 @@ Dependencies: jQuery
 					
 				} else {
 						
-						if (window.scrollTop() >= bottomOffset) 
+						if (windowPosition >= bottomOffset) 
 						{
 								console.log("nav should be in bottom position");
 								affixedSidebar.removeClass("toggle-affixed");
 								affixedSidebar.removeClass("toggle-static");
 								affixedSidebar.addClass("toggle-bottom");
-								affixedSidebar.css("top", 2000); 
+								affixedSidebar.css("top", bottomOffset - sidebarHeight); // should be bottom offset - height of the nav
 						}
-						else if (window.scrollTop() < topOffset) 
+						else if (windowPosition < topOffset) 
 						{
 								console.log("nav should be static");
 								affixedSidebar.removeClass("toggle-affixed");
@@ -49,3 +53,5 @@ Dependencies: jQuery
 						}
 				} 
 			});
+
+})(jQuery);
