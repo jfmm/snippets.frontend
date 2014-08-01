@@ -11,11 +11,12 @@ Dependencies: jQuery
 		
 			var affixedSidebar = $("#affixed-sidebar");
 			var topOffset = $('.jumbotron').outerHeight(true); // 400
-			var bottomOffset = $(document).height() - ($("footer").outerHeight(true) + 900);
-			var sidebarHeight = affixedSidebar.height();
+			var bottomOffset = $(document).height() - ($("footer").outerHeight(true) + 840);
+			var sidebarHeight = affixedSidebar.outerHeight(true);
 
 			console.log("top offset is " + topOffset); 
 			console.log("bottom offset is " + bottomOffset);
+			console.log("height of nave is " + sidebarHeight);
 			console.log("the document is " + $(document).outerHeight());
 			
 	
@@ -30,28 +31,34 @@ Dependencies: jQuery
 				if(windowPosition > topOffset && windowPosition < bottomOffset) {
 					
 						console.log("entering affixed zone, nav is fixed");
-						affixedSidebar.removeClass("toggle-static");
-						affixedSidebar.removeClass("toggle-bottom");
-						affixedSidebar.addClass("toggle-affixed");
-						affixedSidebar.removeAttr("style");
+						
+						affixedSidebar
+						.removeClass("toggle-static")
+						.removeClass("toggle-bottom")
+						.addClass("toggle-affixed")
+						.removeAttr("style");
 					
 				} else {
 						
 						if (windowPosition >= bottomOffset) 
 						{
 								console.log("nav should be in bottom position");
-								affixedSidebar.removeClass("toggle-affixed");
-								affixedSidebar.removeClass("toggle-static");
-								affixedSidebar.addClass("toggle-bottom");
-								affixedSidebar.css("top", bottomOffset - sidebarHeight); // should be bottom offset - height of the nav
+								
+								affixedSidebar
+								.removeClass("toggle-affixed")
+								.removeClass("toggle-static")
+								.addClass("toggle-bottom")
+								.css("top", bottomOffset - sidebarHeight - 170); // should be bottom offset - height of the nav
 						}
 						else if (windowPosition < topOffset) 
 						{
 								console.log("nav should be static");
-								affixedSidebar.removeClass("toggle-affixed");
-								affixedSidebar.addClass("toggle-static");
+								affixedSidebar.removeClass("toggle-affixed").addClass("toggle-static");
 						}
 				} 
 			});
+
+})(jQuery);
+
 
 })(jQuery);
