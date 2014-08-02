@@ -38,7 +38,8 @@ Dependencies: jQuery
 						
 					
 				} else if (windowPosition >= bottomOffset) {
-								console.log("nav should be in bottom position");
+								
+					console.log("nav should be in bottom position");
 								
 								affixedSidebar
 								.addClass("toggle-bottom")
@@ -46,10 +47,11 @@ Dependencies: jQuery
 							
 								
 					
-						}	else if (windowPosition < topOffset) {
+				}	else if (windowPosition < topOffset) {
+					
 								console.log("nav should be static");
 								affixedSidebar.removeClass("toggle-affixed").addClass("toggle-static");
-						}
+				}
 				 
 			});
 	
