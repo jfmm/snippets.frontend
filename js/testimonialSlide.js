@@ -9,7 +9,7 @@
 	var testimonialNumber = $(".testimonial-section-wrap").children(".testimonial-wrap").length;
 	var firstTestimonial = $(".testimonial-wrap:first-child");
 	var current = 0;
-	
+	var cycling;
 	
 	function cycle() {
 		
@@ -47,7 +47,7 @@
 		
 		// set timer and initialize it
 		function initCycle (){
-			setInterval(cycle, 11000);
+			cycling = setInterval(cycle, 11000);
 		} 
 	
 		initCycle();
@@ -55,12 +55,11 @@
 	
 	
 	// TODO:
-	// Clear Interval
 	// if on first slide we click left we go to last
 	$(".arrow-control").on("click", function(){
 		
 		//stop the interval
-		clearInterval(initCycle);
+		window.clearInterval(cycling );
 		
 		var visible = $("div.visible");
 		var direction = $(this).data("dir");
@@ -71,25 +70,31 @@
 		
 		console.log(current);
 		
-		if	(direction === "right" && current < testimonialNumber) {
+		if	(direction === "right" && current < testimonialNumber) 
+		{
 			
-			visible.removeClass("visible").fadeTo(50, 0).next(".testimonial-wrap").addClass("visible").fadeTo(200, 1);
+				visible.removeClass("visible").fadeTo(50, 0).next(".testimonial-wrap").addClass("visible").fadeTo(200, 1);
 	
-		} else if (direction === "right" && current === testimonialNumber)  {
+		} 
+		
+		else if (direction === "right" && current === testimonialNumber)  
+		{
 			
-			console.log("We've reached the end!");
-			// if we just passed the last slide fade out last slide
-			visible.removeClass("visible").fadeTo(50, 0);
-			
-			
-			//add visible to first slide
-			testimonial.first().addClass("visible").fadeTo(200, 1);
-			
-			//reset current counter variable
-			current = 0;
-		}  else if (direction === "left") {
+				console.log("We've reached the end!");
+				// if we just passed the last slide fade out last slide
+				visible.removeClass("visible").fadeTo(50, 0);
 
-			visible.removeClass("visible").fadeTo(50, 0).prev(".testimonial-wrap").addClass("visible").fadeTo(200, 1);
+
+				//add visible to first slide
+				testimonial.first().addClass("visible").fadeTo(200, 1);
+
+				//reset current counter variable
+				current = 0;
+		} 
+		else if (direction === "left") 
+		{
+				
+				visible.removeClass("visible").fadeTo(50, 0).prev(".testimonial-wrap").addClass("visible").fadeTo(200, 1);
 		}
 		
 

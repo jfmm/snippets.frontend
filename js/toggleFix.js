@@ -39,7 +39,7 @@ Dependencies: jQuery
 					
 				} else if (windowPosition >= bottomOffset) {
 								
-					console.log("nav should be in bottom position");
+					 console.log("nav should be in bottom position");
 								
 								affixedSidebar
 								.addClass("toggle-bottom")
