@@ -1,6 +1,7 @@
 /*=========================================  
-					Testimonial Carousel
+			Testimonial Carousel
 ==========================================*/
+
 
 (function($){
 	
@@ -10,6 +11,8 @@
 	var firstTestimonial = $(".testimonial-wrap:first-child");
 	var current = 0;
 	var cycling;
+	
+	console.log("There are " + testimonialNumber + " testimonials");
 	
 	function cycle() {
 		
@@ -58,21 +61,18 @@
 	// if on first slide we click left we go to last
 	$(".arrow-control").on("click", function(){
 		
-		//stop the interval
-		window.clearInterval(cycling );
+		
+		window.clearInterval(cycling);
 		
 		var visible = $("div.visible");
 		var direction = $(this).data("dir");
 		
-		// increment current counter var
 		current++;
-		
-		
-		console.log(current);
-		
+
 		if	(direction === "right" && current < testimonialNumber) 
 		{
-			
+			 
+				console.log("slide number " + current);
 				visible.removeClass("visible").fadeTo(50, 0).next(".testimonial-wrap").addClass("visible").fadeTo(200, 1);
 	
 		} 
@@ -81,6 +81,7 @@
 		{
 			
 				console.log("We've reached the end!");
+				console.log("slide number " + current);
 				// if we just passed the last slide fade out last slide
 				visible.removeClass("visible").fadeTo(50, 0);
 
@@ -91,10 +92,20 @@
 				//reset current counter variable
 				current = 0;
 		} 
-		else if (direction === "left") 
+		else if (direction === "left" && current > 1) 
 		{
-				
+				// if we're going backwards but not in the negative area
+				--current;
+				console.log("we're going backwards but not in the negative area, slide number " + current);
 				visible.removeClass("visible").fadeTo(50, 0).prev(".testimonial-wrap").addClass("visible").fadeTo(200, 1);
+		} else if (direction === "left" && current <= 1){
+		
+			// make last visible and make first invisible
+			console.log("we've entered negative area!");
+			
+			visible.removeClass("visible").fadeTo(50, 0);
+			
+			testimonial.last().addClass("visible").fadeTo(200, 1);
 		}
 		
 
