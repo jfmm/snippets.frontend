@@ -10,6 +10,7 @@ The snippets will Include Javascript, HTML5 boilerplate elements and Sass Mixins
 * Smooth Scroll Snippets
 * On Scroll Navigation style toggle
 * Form Validation Template Script - validation.js
+* testimonialSlide.js - jQuery script which aids with the creation of a stacked div slider with fade effects 
 
 ##CSS
 * Normalize CSS
