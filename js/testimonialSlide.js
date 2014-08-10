@@ -119,8 +119,8 @@
 			visible.removeClass("visible").fadeTo(50, 0);
 			testimonial.first().addClass("visible").fadeTo(200, 1);
 			
-		} else if(current <= 0) {
-			current = testimonialNumber;
+		} else if(current < 0) {
+			current = testimonialNumber - 1;
 			
 			// we fade last one in, fade first one out.
 			visible.removeClass("visible").fadeTo(50, 0);
