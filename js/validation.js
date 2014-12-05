@@ -111,28 +111,7 @@
 	validateEmail("#email");
 	validateEmail("#contact-email");
 
-	
 
-	
-	// Work In progress
-	// validate input will be called to validate diferent types of input
-	function validateInput(type, inputSelector){
-		
-		switch(type){
-			case email: 
-				validateEmail(inputSelector);
-				break;
-			
-			case phone: 
-				console.log("you want to validate a phone number");
-				break;
-				
-			case zip: 
-				console.log("You want to validate the zip code");
-		
-		}
-		
-	}
 	
 	
 	// Disable submit button when page loads
